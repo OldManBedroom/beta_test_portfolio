@@ -1,6 +1,137 @@
+:root {
+  --color-accent: oklch(65% 50% 0); /* Accent color */
+}
+
+/* Apply the accent color globally */
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
     /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
+    max-width: 185ch;
+    /* margin-inline: auto; */
+    padding: 3%;
   }
+nav {
+  display: flex; /* Flexbox layout */
+  /*justify-content: space-around; /* Even spacing between links */
+  /*align-items: center; /* Align items vertically */
+  /*padding: 1rem; /* Padding for spacing */
+  margin-bottom: 1.5rem; /* Space between nav and content */
+  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle cool gray border */
+}
+
+nav a {
+  flex: 1; /* Equal width for all links */
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use parent element's text color */
+  text-align: center; /* Center text in the link box */
+  padding: 0.5em; /* Spacing inside links */
+  font-size: 1.2rem; /* Adjust font size for better readability */
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200); /* Thick bottom border */
+  padding-bottom: 0.1em; /* Reduced padding to counter height increase */
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent); /* Accent color for hover border */
+  padding-bottom: 0.1em;
+}
+
+/* input {
+  font: inherit;
+}
+
+textarea {
+  font: inherit;
+}
+
+button {
+  font: inherit;
+} */
+
+/* Enable CSS Grid on the form */
+form {
+  display: grid; /* Use CSS Grid */
+  font: inherit;
+  grid-template-columns: auto 1fr; /* Define two columns: auto for labels, 1fr for inputs */
+  gap: 1em; /* Add spacing between rows and columns */
+}
+
+/* Make labels span a whole row */
+form label {
+  grid-column: 1; /* Place labels in the first column */
+  font: inherit;
+}
+
+/* Place inputs and textareas in the second column */
+form input, 
+form textarea {
+  grid-column: 2; /* Place in the second column */
+  font: inherit;
+}
+
+/* Make the button span the entire row */
+form button {
+  grid-column: 1 / -1; /* Span all columns */
+  font: inherit;
+}
+
+.projects {
+  display: grid; /* Enable Grid Layout */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Flexible number of columns */
+}
+
+.projects article {
+  display: grid; /* Make <article> a grid container */
+  grid-template-rows: subgrid; /* Use subgrid for row alignment */
+  grid-row: span 3; /* Each <article> spans 3 rows */
+}
+
+.projects h2 {
+  margin: 0; /* Remove default margin for <h2> */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; /* Reduce leading (space between lines) for all headings */
+  text-wrap: balance; /* Prevent uneven lines in headings */
+}
+
+/* Specific styles for <h1> */
+h1 {
+  font-size: 400%; /* Make <h1> significantly larger */
+}
+
+/* Specific styles for <h2> */
+h2 {
+  font-size: 200%; /* Ensure <h2> is distinct from <h1> but smaller */
+}
+
+section {
+  background-color: #fff; /* White background for contrast */
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+}
+
+/* Lists within sections */
+section ul {
+  margin-left: 1.5rem;
+}
+
+/* Footer-like subtle border */
+footer {
+  margin-top: 2rem;
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
