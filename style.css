@@ -1,28 +1,33 @@
 :root {
   --color-accent: oklch(65% 50% 0); /* Accent color */
+  --border-color: oklch(50% 10% 200 / 40%); /* Updated border color for dark mode */
 }
 
 /* Apply the accent color globally */
 html {
   accent-color: var(--color-accent);
+  color-scheme: light dark; /* Enable automatic light/dark mode based on OS settings */
 }
 
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-    max-width: 185ch;
-    /* margin-inline: auto; */
-    padding: 3%;
-  }
+  /* Set line height to 1.5 times the font size
+       and use the OS’s UI font as the website font
+     */
+  font: 100%/1.5 system-ui;
+  max-width: 185ch;
+  /* margin-inline: auto; */
+  padding: 3%;
+  background-color: canvas; /* Automatically adapts to light/dark mode */
+  color: canvastext; /* Automatically adapts to light/dark mode */
+}
+
 nav {
   display: flex; /* Flexbox layout */
   /*justify-content: space-around; /* Even spacing between links */
   /*align-items: center; /* Align items vertically */
   /*padding: 1rem; /* Padding for spacing */
   margin-bottom: 1.5rem; /* Space between nav and content */
-  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle cool gray border */
+  border-bottom: 1px solid var(--border-color); /* Updated border color */
 }
 
 nav a {
@@ -35,7 +40,7 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200); /* Thick bottom border */
+  border-bottom: 0.4em solid var(--border-color); /* Updated border color for the current page */
   padding-bottom: 0.1em; /* Reduced padding to counter height increase */
 }
 
@@ -114,7 +119,7 @@ h2 {
 }
 
 section {
-  background-color: #fff; /* White background for contrast */
+  background-color: canvas; /* White background for contrast */
   padding: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 8px; /* Rounded corners */
@@ -135,3 +140,12 @@ footer {
   font-size: 0.9rem;
   color: #777;
 }
+
+.color-scheme {
+  position: absolute; /* Take the element out of the normal flow */
+  top: 1rem; /* Distance from the top */
+  right: 1rem; /* Distance from the right */
+  font-size: 80%; /* Make the font slightly smaller */
+  font-family: inherit; /* Inherit the font family from the parent */
+}
+
