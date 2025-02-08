@@ -81,3 +81,43 @@ select.addEventListener('input', function (event) {
     document.documentElement.style.setProperty('color-scheme', selectedScheme); // Apply the value
     localStorage.colorScheme = selectedScheme; // Save to localStorage
 });
+
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+
+        // Check for a successful response
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+
+        // Parse and return the data
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+    containerElement.innerHTML = '';
+  
+    projects.forEach(project => {
+        const article = document.createElement('article'); 
+  
+        article.innerHTML = `
+            <${headingLevel}>${project.title}</${headingLevel}>
+            <p>Year: ${project.year}</p>
+            <img src="${project.image || 'default.jpg'}" alt="${project.title}">
+            <p>${project.description}</p>
+        `;
+  
+        containerElement.appendChild(article);
+    });
+  }
+
+export async function fetchGitHubData(username) {
+    // Fetch data from the GitHub API for the given username
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}

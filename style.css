@@ -90,17 +90,43 @@ form button {
 
 .projects {
   display: grid; /* Enable Grid Layout */
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Flexible number of columns */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Define flexible grid columns */
+  gap: 20px; /* Add spacing between project cards */
+  padding: 20px; /* Add padding around the container */
+  align-items: start; /* Ensure cards align properly */
 }
 
+/* Individual Project Cards */
 .projects article {
-  display: grid; /* Make <article> a grid container */
-  grid-template-rows: subgrid; /* Use subgrid for row alignment */
-  grid-row: span 3; /* Each <article> spans 3 rows */
+  background-color: transparent; /* Remove the grey background */
+  border: none; /* Remove the border if present */
+  box-shadow: none; /* Remove the shadow if not needed */
+  padding: 16px; /* Optional: Adjust padding for spacing */
+  text-align: center; /* Keep text alignment */
 }
 
+/* Headings for Projects */
 .projects h2 {
-  margin: 0; /* Remove default margin for <h2> */
+  font-size: 1.5rem; /* Larger font size for project titles */
+  margin-bottom: 10px; /* Add space below the heading */
+  font-weight: bold; /* Bold text for emphasis */
+}
+
+/* Placeholder for Images */
+.projects img {
+  width: 100%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Add space below the image */
+  background-color: #e0e0e0; /* Add a background for placeholder images */
+  border-radius: 4px; /* Slightly rounded corners */
+}
+
+/* Description for Projects */
+.projects p {
+  font-size: 1rem; /* Set font size for descriptions */
+  line-height: 1.5; /* Improve readability */
+  color: #333; /* Darker text for contrast */
+  margin: 0; /* Remove default margin */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -149,3 +175,130 @@ footer {
   font-family: inherit; /* Inherit the font family from the parent */
 }
 
+/* General styling for the container */
+#profile-stats {
+  max-width: 800px; /* Limit the width */
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Add padding around the stats */
+  text-align: center; /* Center the text */
+  font-family: Arial, sans-serif; /* Set a clean font */
+}
+
+/* Styling for the description list */
+#profile-stats dl {
+  display: grid; /* Use CSS grid */
+  grid-template-columns: repeat(4, 1fr); /* Create four equal columns */
+  gap: 20px; /* Add spacing between columns */
+  text-align: center; /* Center-align text */
+  margin-top: 20px; /* Add spacing above the stats */
+}
+
+/* Styling for dt (labels) */
+#profile-stats dt {
+  font-size: 0.9rem; /* Smaller text size for labels */
+  color: #6c757d; /* Muted color for labels */
+  text-transform: uppercase; /* Make labels uppercase */
+  margin-bottom: 5px; /* Add some spacing below labels */
+}
+
+/* Styling for dd (values) */
+#profile-stats dd {
+  font-size: 2rem; /* Larger text size for values */
+  font-weight: bold; /* Bold font for emphasis */
+  margin: 0; /* Remove default margin */
+  color: #212529; /* Darker color for contrast */
+}
+
+/* Add a subtle background and rounded corners for better aesthetics */
+#profile-stats dl {
+  background-color: #f9f9f9; /* Light grey background */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the stats box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Adjust gap for smaller screens */
+@media (max-width: 768px) {
+  #profile-stats dl {
+    grid-template-columns: repeat(2, 1fr); /* Switch to two columns */
+  }
+}
+
+@media (max-width: 480px) {
+  #profile-stats dl {
+    grid-template-columns: 1fr; /* Switch to one column */
+    gap: 10px; /* Reduce gap for small screens */
+  }
+}
+
+#projects-plot {
+  max-width: 20em; /* Limits the width to ensure a proportional size */
+  margin: 2em auto; /* Adds vertical spacing and centers horizontally */
+  overflow: visible; /* Ensures all content within the viewBox is visible */
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  gap: 1.5rem; /* Add spacing between the pie chart and the legend */
+  margin-top: 2rem; /* Add spacing above the container */
+}
+
+svg {
+  flex: 0 0 auto; /* Prevent the SVG from resizing */
+  max-width: 200px; /* Set a fixed maximum width for the pie chart */
+}
+
+.legend {
+  flex: 1; /* Allow the legend to take up remaining space */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); /* Make the legend responsive */
+  gap: 0.5rem;
+}
+
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+
+.selected {
+  --color: oklch(60% 45% 0) !important; /* Use a distinct color for the highlight */
+}
+
+path.selected {
+  fill: var(--color);
+}
+
+path {
+  cursor: pointer;
+  transition: 300ms;
+}
