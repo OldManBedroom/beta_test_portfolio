@@ -19,8 +19,9 @@ let pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
-    { url: 'https://github.com/OldManBedroom', title: 'Github Profile' },
     { url: 'resume/', title: 'Resume' },
+    { url: 'meta/', title: 'Meta' },
+    { url: 'https://github.com/OldManBedroom', title: 'Github Profile' },
 ];
 
 // Detect if on the home page
