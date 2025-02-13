@@ -35,6 +35,7 @@ jobs:
           fetch-depth: '0'
       - name: Run Elocuent
         run: |
+          chmod +x node_modules/.bin/elocuent
           npx elocuent -d . -o meta/loc.csv
 
       - name: Commit and Push
