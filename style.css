@@ -272,7 +272,7 @@ footer {
 
 svg {
   flex: 0 0 auto; /* Prevent the SVG from resizing */
-  max-width: 200px; /* Set a fixed maximum width for the pie chart */
+  max-width: 1100px; /* Set a fixed maximum width for the pie chart */
 }
 
 .legend {
@@ -301,4 +301,99 @@ path.selected {
 path {
   cursor: pointer;
   transition: 300ms;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+  gap: 0px; /* Space between items */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.stats dt {
+  font-size: 12px;
+  font-weight: bold;
+  color: #777; /* Lighter color for labels */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stats dd {
+  font-size: 28px; /* Large numbers */
+  font-weight: bold;
+  margin: 5px 0 0;
+  color: #000; /* Darker color for numbers */
+}
+
+.stats-container {
+  border-top: 2px solid #ddd; /* Separator line on top */
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+.gridlines line {
+  stroke: lightgray;  /* Light gray for subtle effect */
+  /* stroke-opacity: 0.5; Make them semi-transparent */
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0.5em;
+  background: rgba(218, 206, 39, 0.7);
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  max-width: 250px;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  display: none;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px;
+  font-size: 14px;
+  backdrop-filter: blur(5px); /* Subtle glass effect */
+  border: 1px solid rgba(200, 200, 200, 0.5); /* Light border */
+}
+
+.tooltip dt {
+  font-weight: bold;
+  color: #333;
+}
+
+.tooltip dd {
+  margin: 0;
+  padding-left: 5px;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+  /* fill: orange; */
+}
+
+circle.selected {
+  fill: #ff6b6b;
 }
